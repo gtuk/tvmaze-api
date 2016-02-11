@@ -1,5 +1,5 @@
 {
-  "name": "tvmaze",
+  "name": "tvmaze-api",
   "version": "0.1.0",
   "description": "Tvmaze api written in node",
   "main": "tvmaze.js",
@@ -9,15 +9,12 @@
     "tv",
     "calender"
   ],
-  "author": {
-    "name": "gtuk",
-    "url": "http://gtuk.me/"
-  },
+  "author": "gtuk (http://gtuk.me/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gtuk/tvmaze-api.git"
+    "url": "git+https://github.com/gtuk/tvmaze-api.git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/gtuk/tvmaze-api#readme",
   "license": "MIT",
   "dependencies": {
     "request": "~2.69.0"
@@ -28,5 +25,11 @@
   },
   "scripts": {
     "test": "mocha test"
+  },
+  "bugs": {
+    "url": "https://github.com/gtuk/tvmaze-api/issues"
+  },
+  "directories": {
+    "test": "test"
   }
 }
