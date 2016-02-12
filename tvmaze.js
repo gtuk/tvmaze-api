@@ -10,7 +10,8 @@ var endpoints = {
     'id': {
         'tvrage': 'lookup/shows?tvrage=',
         'thetvdb': 'lookup/shows?thetvdb=',
-        'imdb': 'lookup/shows?imdb='
+        'imdb': 'lookup/shows?imdb=',
+        'tvmaze': 'shows/'
     },
     'schedule': 'schedule?country=$1&date=$2',
     'show': 'shows/',
@@ -22,10 +23,20 @@ var endpoints = {
  *
  * @param query
  * @param single
+ * @param embed
  * @param callback
  */
-function querySearch( query, single, callback ) {
-    var url = apiBaseUrl + ( single ? endpoints['query']['single'] : endpoints['query']['multi'] ) + query;
+function querySearch( query, single, embed, callback ) {
+    var embd = '';
+        if ( single ) {
+        for ( var key in embed ) {
+            if (  embed.hasOwnProperty(key) ) {
+                embd += '&embed[]=' + embed[key];
+            }
+        }
+    }
+
+    var url = apiBaseUrl + ( single ? endpoints['query']['single'] : endpoints['query']['multi'] ) + query + embd;
 
     fetch(url, function(result) {
         callback(result);
@@ -55,10 +66,18 @@ function idSearch( id, type, callback ) {
  * Get show infos by id
  *
  * @param id
+ * @param embed
  * @param callback
  */
-function showSearch( id, callback ) {
-    var url = apiBaseUrl+endpoints['show'] + id;
+function showSearch( id, embed, callback ) {
+    var embd = '';
+    for ( var key in embed ) {
+        if (  embed.hasOwnProperty(key) ) {
+            embd += ( 0 == key ? '?' : '&' ) + 'embed[]=' + embed[key];
+        }
+    }
+
+    var url = apiBaseUrl+endpoints['show'] + id + embd;
 
     fetch(url, function(result) {
         callback(result);

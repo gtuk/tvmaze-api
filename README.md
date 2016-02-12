@@ -19,7 +19,12 @@ npm test
 var tvmaze = require("tvmaze-api");
 
 // Search by query (single, multiple)
-tvmaze.getByQuery('girls', true, function(result){
+tvmaze.getByQuery('girls', true, [], function(result){
+    console.log(result);
+});
+
+// Search by query (single, multiple) and include additional result values (possible embed types are episodes, cast, nextepisode and previousepisode. Only works with single search)
+tvmaze.getByQuery('girls', true, ['episodes', 'cast'], function(result){
     console.log(result);
 });
 
@@ -29,7 +34,12 @@ tvmaze.getById('tt0944947', 'imdb', function(result){
 });
 
 // Get show details by tvmaze id
-tvmaze.getShow('82', function(result){
+tvmaze.getShow('82', [], function(result){
+    console.log(result);
+});
+
+// Get show details by tvmaze id and include additional result values (possible embed types are episodes, cast, nextepisode and previousepisode)
+tvmaze.getShow('82', ['episodes', 'cast', 'nextepisode', 'previousepisode'], function(result){
     console.log(result);
 });
 
