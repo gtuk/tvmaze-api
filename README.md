@@ -1,6 +1,8 @@
 # tvmaze-api
 Node wrapper for tvmaze
 
+[![Build Status](https://travis-ci.org/gtuk/tvmaze-api.svg?branch=master)](https://travis-ci.org/gtuk/tvmaze-api)
+
 ## Installation
 ```
 npm install tvmaze-api --save
